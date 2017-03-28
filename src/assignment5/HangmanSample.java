@@ -68,8 +68,9 @@ public class HangmanSample {
             //make the guess a character
             char letter = guess.charAt(0);
 
-            //change 
+            //chack if guess is in the word
             for (int a = 0; a < length; a++) {
+               
             }
 
         }
