@@ -25,6 +25,10 @@ public class HangmanSample {
 
         //Create counter for letters that are correct
         int kramer = 0;
+
+        //Check if game is done
+        boolean isFinished = false;
+
         //create a scanner
         Scanner input = new Scanner(System.in);
 
@@ -64,11 +68,11 @@ public class HangmanSample {
         //Create string builder to edit theword with dashes
         StringBuilder jaded = new StringBuilder(WORD);
 
-        while (tyler > 0) {
+        while (tyler > 0 && !isFinished) {
 
             //Let them know of thier life count
             System.out.println("You have " + tyler + " lives left");
-            System.out.println("The current word is " + WORD);
+            System.out.println("The current word is " + jaded);
 
             //tell to give first guess
             System.out.println("please enter your first guess");
@@ -108,18 +112,15 @@ public class HangmanSample {
                 //increase counter to move to the next word
                 i++;
             }
-
-            //Loop to print out all the letters from dashes to actual letters
-            for (int i = 0; i < length; i++) {
-                System.out.println(jaded.charAt(i) + " ");
-            }
+            
+            System.out.println("");
 
             //reset counter after going through every letter
             perry = 1;
 
             //Iif the player guesses correct
             if (kramer == length) {
-                break;
+                isFinished = true;
             }
 
         }
