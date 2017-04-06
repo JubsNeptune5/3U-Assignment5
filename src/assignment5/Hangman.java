@@ -117,7 +117,7 @@ public class Hangman {
                     //decrese life number
                     tyler--;
                     //Let them know they are wrong
-                    System.out.println("You guesseed wrong! you now have " + tyler + "lives left");
+                    System.out.println("You guesseed wrong! you now have " + tyler + " lives left");
                 }
                 //increase counter to move to the next word
                 i++;
@@ -146,7 +146,7 @@ public class Hangman {
 
             //congragulate the winner
             System.out.println("Congratulations, you win!!!");
-            System.out.println("And it only took you: " + whitford + " guesses to guess: " + word);
+            System.out.println("And it only took you: " + whitford + " guesses to guess the word: " + word);
             System.out.println("If you want to beat your score of: " + whitford + ". Restart the program to play again");
         }
     }
