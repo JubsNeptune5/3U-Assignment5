@@ -102,13 +102,13 @@ public class HangmanSample {
                     //Let them know they are wrong
                     System.out.println("You guesseed wrong! you now have " +tyler+ "lives left");
                 }
-                //increase counter to moive to the next word
+                //increase counter to move to the next word
                 i++;
             }
             
             //Loop to print out all the letters from dashes to actual letters
-            for (int d = 0; d < length; d++) {
-                System.out.println(jaded.charAt(d) + "");
+            for (int i = 0; i < length; i++) {
+                System.out.println(jaded.charAt(i));
             }
             
             //reset counter after going through every letter
