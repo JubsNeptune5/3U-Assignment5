@@ -7,6 +7,7 @@ package assignment5;
 import java.util.Scanner;
 
 /**
+ * Hangman game
  *
  * @author laveh2107
  */
@@ -16,6 +17,14 @@ public class HangmanSample {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        //Create counter for lives 
+        int tyler = 6;
+
+        //Create counter so one doesn't go the length of the word
+        int perry = 1;
+
+        //Create counter for letters that are correct
+        int kramer = 0;
         //create a scanner
         Scanner input = new Scanner(System.in);
 
@@ -35,44 +44,89 @@ public class HangmanSample {
         //Let p2 know it's thier turn
         System.out.println("Player 2, it's your chance to guess your friend's word!");
 
-        //Create a counter for lives in the game
-        for (int x = 6; x > 0; x = x + 0) {
+        //Create copy of the word to be copied
+        String WORD = word;
 
-            //Get length of the word
-            int length = word.length();
+        //Get length of the word
+        int length = WORD.length();
 
-            //Make all the characters dashes
-            for (int a = 0; a < length; a++) {
-                //get the character at position a
-                char blank = word.charAt(a);
-                //list the alphabet to change any character to dash 
-                if (blank == 'q' || blank == 'w' || blank == 'e' || blank == 'r'
-                        || blank == 't' || blank == 't' || blank == 'y' || blank == 'u'
-                        || blank == 'i' || blank == 'o' || blank == 'p' || blank == 'a'
-                        || blank == 's' || blank == 'd' || blank == 'f' || blank == 'g'
-                        || blank == 'h' || blank == 'j' || blank == 'k' || blank == 'l'
-                        || blank == 'z' || blank == 'x' || blank == 'c' || blank == 'v'
-                        || blank == 'b' || blank == 'n' || blank == 'm') {
-                    //replace each character with a dash
-                    word = word.replace(blank, '-');
-                }
-            }
-            //Let them know of thier life count
-            System.out.println("You have " + x + " lives left");
-            System.out.println("The current word is " + word);
+        //Make all the characters dashes
+        for (int a = 0; a < length; a++) {
+            //Create substring
+            String blank1 = WORD.substring(a,a+1);
+            //Make a character the same as blank1
+            char blank = blank1.charAt(0);
             
+            //Change all letters to dashes
+            WORD = WORD.replace(blank, '-');
+        }
+
+        //Create string builder to edit theword with dashes
+        StringBuilder jaded = new StringBuilder(WORD);
+
+        while (tyler > 0) {
+            //Let them know of thier life count
+            System.out.println("You have " + tyler + " lives left");
+            System.out.println("The current word is " + WORD);
+
             //tell to give first guess
             System.out.println("please enter your first guess");
+            //store input as a guess
             String guess = input.nextLine();
-
-            //make the guess a character
-            char letter = guess.charAt(0);
-
-            //chack if guess is in the word
-            for (int a = 0; a < length; a++) {
-               
+            //Guess becomes the first letter if thier guess contained more letters
+            char Guess = guess.charAt(0);
+            
+            for (int i = 0; i < length;) {
+                //Sotes the first letter of the word trying to be guessed
+                char letter = word.charAt(i);
+                
+                //If the guess is correct
+                if(letter == Guess){
+                
+                    //Change the dash in the spot of the correct letter to the correct letter
+                    jaded.setCharAt(i, Guess);
+                    
+                    //decrease counter
+                    perry--;
+                    
+                    //Increase number of correct numbers
+                    kramer++;
+                }
+                //Increase counter
+                perry++;
+                
+                //If the guess is wrong 
+                if (perry > length){
+                    //decrese life number
+                    tyler--;
+                    //Let them know they are wrong
+                    System.out.println("You guesseed wrong! you now have " +tyler+ "lives left");
+                }
+                //increase counter to moive to the next word
+                i++;
+            }
+            
+            //Loop to print out all the letters from dashes to actual letters
+            for (int d = 0; d < length; d++) {
+                System.out.println(jaded.charAt(d) + "");
+            }
+            
+            //reset counter after going through every letter
+            perry = 1;
+            
+            //Iif the player guesses correct
+            if(kramer ==length){
+                break;
             }
 
+        }
+        if(tyler ==0){
+            //tell them they are losers
+            System.out.println("Looks like you couldn't guess correctly since you lost!!!!!");
+            System.out.println("The word was: "+word);
+        }else{
+            //congragulate the winner
+            System.out.println("Congratulations, you win!!!");
         }
     }
 }
