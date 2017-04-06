@@ -26,6 +26,9 @@ public class Hangman {
         //Create counter for letters that are correct
         int kramer = 0;
 
+        //Create counter to see how many times one guessed
+        int whitford = 0;
+
         //Check if game is done
         boolean isFinished = false;
 
@@ -90,6 +93,7 @@ public class Hangman {
             char Guess = guess.charAt(0);
 
             for (int i = 0; i < length;) {
+                
                 //Sotes the first letter of the word trying to be guessed
                 char letter = word.charAt(i);
 
@@ -117,6 +121,7 @@ public class Hangman {
                 }
                 //increase counter to move to the next word
                 i++;
+                whitford++;
             }
 
             System.out.println("");
@@ -131,13 +136,18 @@ public class Hangman {
 
         }
         if (tyler == 0) {
+
             //tell them they are losers
             System.out.println("Looks like you couldn't guess correctly since you lost!!!!!");
             System.out.println("The word was: " + word);
+            System.out.println("Restart the program if you wish to play again");
+        
         } else {
+
             //congragulate the winner
             System.out.println("Congratulations, you win!!!");
-            System.out.println("YOu successfully guessed: " + word);
+            System.out.println("And it only took you: " + whitford + " guesses to guess: " + word);
+            System.out.println("If you want to beat your score of: " + whitford + ". Restart the program to play again");
         }
     }
 }
