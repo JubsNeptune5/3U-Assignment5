@@ -30,8 +30,7 @@ public class Hangman {
         int whitford = 0;
 
         //Check if game is done
-        boolean isFinished = false;
-
+        //boolean isFinished = false;
         //create a scanner
         Scanner input = new Scanner(System.in);
 
@@ -74,8 +73,8 @@ public class Hangman {
         //Create string builder to edit theword with dashes
         StringBuilder jaded = new StringBuilder(WORD);
 
-        while (tyler > 0 && !isFinished) {
-
+        //Ask for guess and continue to until they run out of lives
+        while (tyler > 0) {
             //Let them know of thier life count
             System.out.println("You have " + tyler + " lives left");
             System.out.println("The current word is " + jaded);
@@ -93,7 +92,7 @@ public class Hangman {
             char Guess = guess.charAt(0);
 
             for (int i = 0; i < length;) {
-                
+
                 //Sotes the first letter of the word trying to be guessed
                 char letter = word.charAt(i);
 
@@ -119,19 +118,23 @@ public class Hangman {
                     //Let them know they are wrong
                     System.out.println("You guesseed wrong! you now have " + tyler + " lives left");
                 }
-                //increase counter to move to the next word
+                //increase counter to move on to next character
                 i++;
-                whitford++;
+
             }
 
             System.out.println("");
 
             //reset counter after going through every letter
             perry = 1;
+            
+            //Add counter for each guess the person has made
+            whitford++;
 
             //Iif the player guesses correct
             if (kramer == length) {
-                isFinished = true;
+                //end the while loop
+                break;
             }
 
         }
@@ -141,7 +144,7 @@ public class Hangman {
             System.out.println("Looks like you couldn't guess correctly since you lost!!!!!");
             System.out.println("The word was: " + word);
             System.out.println("Restart the program if you wish to play again");
-        
+
         } else {
 
             //congragulate the winner
